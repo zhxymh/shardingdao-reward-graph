@@ -1,0 +1,47 @@
+specVersion: 0.0.2
+description: ShardingDAO Subgraph
+repository: https://github.com/ShardingDAOProject/ShardingDAORewardGraph
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: MarketingMining
+    network: mainnet
+    source:
+      address: '0x724ebbd38094982f784920faca1274f78d3352b8'
+      abi: SHDToken
+      startBlock: 12059833
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - MarketingMiningTransfer
+      abis:
+        - name: SHDToken
+          file: ./abis/SHDToken.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleMarketingMiningTransfer
+      file: ./src/mapping.ts
+  - kind: ethereum/contract
+    name: ShardingDAOMining
+    network: mainnet
+    source:
+      address: '0x627Af3B7bB61CB5E96a1F31277eb387DeFe737A1'
+      abi: ShardingDAOMiningDelegator
+      startBlock: 12059930
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - ShardingDAOMiningDeposit
+      abis:
+        - name: ShardingDAOMiningDelegator
+          file: ./abis/ShardingDAOMiningDelegator.json
+      eventHandlers:
+        - event: Deposit(indexed address,indexed uint256,uint256,uint256)
+          handler: handleShardingDAOMiningDeposit
+      file: ./src/mapping.ts
+

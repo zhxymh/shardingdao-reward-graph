@@ -1,0 +1,18 @@
+type MarketingMiningTransfer @entity{
+  id: ID!
+  sender : Bytes!
+  user: Bytes!
+  amount: BigInt!
+  blockNumber: BigInt!
+  blockHash: Bytes!
+}
+
+type ShardingDAOMiningDeposit @entity{
+  id: ID!
+  user: Bytes!
+  pid: BigInt!
+  amount: BigInt!
+  weight: BigInt!
+  blockNumber: BigInt!
+  blockHash: Bytes!
+}

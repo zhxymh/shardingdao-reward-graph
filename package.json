@@ -1,0 +1,27 @@
+{
+  "name": "ShardingDAO",
+  "version": "0.1.0",
+  "scripts": {
+    "build-contract": "solc contracts/Gravity.sol --abi -o abis --overwrite && solc contracts/Gravity.sol --bin -o bin --overwrite",
+    "create": "graph create milesgrace/shardingdao-reward --node https://api.thegraph.com/deploy/",
+    "create-local": "graph create milesgrace/shardingdao-reward --node http://18.183.43.218:8020",
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "deploy-mainnet": "graph deploy milesgrace/shardingdao-reward --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/",
+    "deploy-kovan": "graph deploy milesgrace/shardingdao-reward-kovan --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/",
+    "deploy-bsc": "graph deploy milesgrace/shardingdao-reward-bsc --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/",
+    "deploy-local": "graph deploy milesgrace/shardingdao-reward --ipfs http://18.183.43.218:5001 --node http://18.183.43.218:8020"
+  },
+  "devDependencies": {
+    "@graphprotocol/graph-cli": "^0.20.0",
+    "@graphprotocol/graph-ts": "^0.20.0",
+    "mustache": "^3.1.0"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "babel-register": "^6.26.0",
+    "truffle": "^5.0.4",
+    "truffle-contract": "^4.0.5",
+    "truffle-hdwallet-provider": "^1.0.4"
+  }
+}
